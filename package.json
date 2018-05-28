@@ -1,4 +1,7 @@
 {
   "name": "jadata",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "cheerio-httpcli": "^0.7.3"
+  }
 }
