@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mkdir -p data
+
+find crawlers -type f -name '*.js' -exec sh -c 'node "{}" > data/$(basename "{}" .js).json' \;
