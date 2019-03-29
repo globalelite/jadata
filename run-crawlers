@@ -1,5 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
 mkdir -p data
 
+find data -type f -name '*.json' -exec mv {} {}.bak \;
+
 find crawlers -type f -name '*.js' -exec sh -c 'node "{}" > data/$(basename "{}" .js).json' \;
+
+if type jq >/dev/null 2>&1; then
+    for name in $(find data -type f -name '*.json');
+    do
+        diff <(jq . $name.bak) <(jq . $name)
+    done
+fi
+
+rm data/*.bak
