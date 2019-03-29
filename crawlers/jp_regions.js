@@ -20,11 +20,11 @@ client.fetch('https://ja.wikipedia.org/wiki/%E9%83%BD%E9%81%93%E5%BA%9C%E7%9C%8C
     const $tds = $(this).find('td');
     if (!$tds.length) return;
     if ($tds.length !== 11) throw new Error('Broken table[0]');
-    raw_prefs.push([
-      $(this).find('th>a').eq(0).text().trim(),
-      $tds.eq(0).text().trim(),
-      $tds.eq(2).text().trim(),
-    ]);
+    raw_prefs.push({
+      name: $(this).find('th>a').eq(0).text().trim(),
+      read: $tds.eq(0).text().trim(),
+      capital: $tds.eq(2).text().trim(),
+    });
     raw_regions_map[$tds.eq(4).text().trim()] = true;
   });
 

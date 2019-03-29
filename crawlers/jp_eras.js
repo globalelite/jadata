@@ -24,10 +24,10 @@ client.fetch('https://ja.wikipedia.org/wiki/%E5%85%83%E5%8F%B7%E4%B8%80%E8%A6%A7
       if ($ths.length !== 1 || $tds.length < 5) return;
       const $a = $ths.eq(0).find('a');
       if (!$a.length) return;
-      raw_eras.push([
-        $a.text().trim(),
-        $tds.eq(0).text().trim(),
-      ]);
+      raw_eras.push({
+        name: $a.text().trim(),
+        read: $tds.eq(0).text().trim(),
+      });
     });
   });
 
