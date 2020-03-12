@@ -9,7 +9,7 @@ find crawlers -type f -name '*.js' -exec sh -c 'node "{}" > data/$(basename "{}"
 if type jq >/dev/null 2>&1; then
     for name in $(find data -type f -name '*.json');
     do
-        diff <(jq . $name.bak) <(jq . $name)
+        diff -U 10 <(jq . $name.bak) <(jq . $name)
     done
 fi
 
